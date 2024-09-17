@@ -1,0 +1,7 @@
+# branch_name="$(git symbolic-ref --short HEAD)"
+
+# if ! [[ "$branch_name" =~ ^(feature|bugfix|hotfix|release|docs)\/[a-z0-9._-]+$ ]]; then
+#   echo "Error: Branch name '$branch_name' does not follow the naming convention."
+#   echo "Allowed branches: feature/*, bugfix/*, hotfix/*, release/*, docs/*"
+#   exit 1
+# fi

@@ -1,0 +1,28 @@
+
+
+// Import fonts
+@import 'https://fonts.googleapis.com/css2?family=Allura&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Lobster&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap';
+
+// Define color variables
+$color-lightgray: #c4d4dc;
+$color-lightblue: #0000a8;
+$color-darkblue: #262262;
+$color-white: #fff;
+$color-black: #242526;
+
+// Define font variables
+$font-roboto: 'Roboto', sans-serif;
+$font-allura: 'Allura', cursive;
+$font-lobster: 'Lobster', cursive;
+$font-josefin-sans: 'Josefin Sans', sans-serif;
+
+// Define breakpoint variables
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-xxl: 1440px;
+$breakpoint-xxxl: 1920px;

@@ -1,0 +1,47 @@
+/* mcbcTypescript/frontend/src/styles/components/footer.scss */
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.footer {
+    align-items: center;
+    align-self: flex-end;
+    background-color: $color-white;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: space-between;
+    // margin-top: auto;
+    width: 100%;
+    z-index: 1000;
+  }
+  
+  .copyright {
+    color: $color-darkblue;
+    font-family: $font-roboto;
+    font-size: 1.25rem;
+    font-weight: 900;
+  
+    @include respond-to-xxxl {
+      padding-left: 2.5rem;
+    }
+  }
+  
+  .construction {
+    color: darkred;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    font-weight: bolder;
+  }
+  
+  .social-icons {
+    a {
+      color: $color-lightblue;
+      font-size: 1.5rem;
+      margin: 0 1rem;
+    }
+  }
+  
+  .social-icons a:hover {
+    color: $color-darkblue;
+  }
+  

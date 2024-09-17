@@ -1,0 +1,132 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 1rem 0;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $color-white;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+  }
+
+  &.open {
+    display: flex;
+  }
+}
+
+.nav-item {
+  color: $color-darkblue;
+  font-family: $font-roboto;
+  font-size: 1.25rem;
+  font-weight: 600;
+  list-style: none;
+
+  a, .menu-button {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    padding: 0;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.menu-button {
+  border: none; /* Ensure the menu button looks like a link */
+  background: none;
+  padding: 0;
+  margin: 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.menu-list {
+  background-color: $color-white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.hamburger-menu {
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+    background-color: $color-darkblue;
+    color: $color-white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 2rem;
+    padding: 0.5rem;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10001;
+  }
+}
+
+.mobile-nav {
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: $color-white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  padding: 0.5rem;
+  z-index: 10010;
+
+  @media (max-width: 768px) {
+    display: block;
+    position: static;
+    transform: none;
+  }
+}

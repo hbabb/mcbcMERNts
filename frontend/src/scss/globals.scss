@@ -1,0 +1,41 @@
+
+// Import Variables and Mixins
+@import './variables.scss';
+@import './mixins.scss';
+
+// Global styles
+:root {
+    background-color: #242424;
+    // background-color: $color-white;
+    color: rgb(255 255 255 / 87%);
+    color-scheme: light dark;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-synthesis: none;
+    text-rendering: optimizelegibility;
+    text-size-adjust: 100%;
+    border: 4px solid green;
+  }
+  
+  html,
+  body {
+    border: 4px solid red;
+    // margin: 0;
+    // display: flex;
+    // place-items: center;
+    // min-width: 320px;
+    // height: 100svh;
+    // width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+  
+  .page-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    border: 4px solid green;
+    min-height: 100svh;
+  }

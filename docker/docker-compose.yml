@@ -1,0 +1,34 @@
+services:
+  backend:
+    build:
+      context: ../
+      dockerfile: backend/Dockerfile
+    working_dir: /usr/src/app/backend
+    ports:
+      - "5000:5000" # Map port 5000 inside the container to port 5000 on the host
+    volumes:
+      - ../backend:/usr/src/app/backend
+      - /usr/src/app/node_modules # Prevent overwriting node_modules
+    environment:
+      - NODE_ENV=development
+      - HUSKY_SKIP_INSTALL=true
+    env_file:
+      - ../.env.development.local
+    depends_on:
+      - frontend
+
+  frontend:
+    build:
+      context: ../
+      dockerfile: frontend/Dockerfile
+    working_dir: /usr/src/app/frontend
+    ports:
+      - "3000:3000" # Map port 3000 inside the container to port 3000 on the host
+    volumes:
+      - ../frontend:/usr/src/app/frontend
+      - /usr/src/app/node_modules # Prevent overwriting node_modules
+    environment:
+      - NODE_ENV=development
+      - HUSKY_SKIP_INSTALL=true
+    env_file:
+      - ../.env.development.local
