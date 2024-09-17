@@ -8,7 +8,7 @@
   "type": "module",
   "main": "backend/server.ts",
   "engines": {
-    "node": ">=20.17.0"
+    "node": ">=20.0.0"
   },
   "directories": {
     "doc": "docs",
@@ -18,8 +18,22 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "husky"
+    "security-check": "npm audit",
+    "dev:backend": "nodemon backend/server.js",
+    "dev:frontend": "vite",
+    "postinstall": "[ ! \"$HUSKY_SKIP_INSTALL\" ] && node .husky/install.mjs || exit 0",
+    "test": "tap",
+    "prettier": "prettier --check \"**/*.{js,jsx,ts,tsx}\"",
+    "prettier:fix": "prettier --write \"**/*.{js,jsx,ts,tsx}\"",
+    "lint:markdown": "markdownlint docs/**/*.md",
+    "fix:markdown": "prettier --write docs/**/*.md",
+    "eslint": "eslint --report-unused-disable-directives --ext .js,.jsx,.ts,.tsx --max-warnings=0 ./backend ./frontend",
+    "eslint:fix": "eslint --report-unused-disable-directives --ext .js,.jsx,.ts,.tsx --max-warnings=0 ./backend ./frontend --fix",
+    "build:frontend": "tsc -b && vite build",
+    "preview": "vite preview",
+    "start:frontend": "serve -s dist",
+    "clean": "rm -rf dist",
+    "analyze": "vite build --mode analyze"
   },
   "husky": {
     "hooks": {
@@ -60,6 +74,8 @@
     "@eslint/js": "^9.10.0",
     "@reduxjs/toolkit": "^2.2.7",
     "@svgr/rollup": "^8.1.0",
+    "@testing-library/jest-dom": "^6.5.0",
+    "@testing-library/react": "^16.0.1",
     "@types/node": "^22.5.5",
     "@types/postcss-import": "^14.0.3",
     "@types/react": "^18.3.6",
@@ -76,6 +92,8 @@
     "babel-plugin-transform-import-meta": "^2.2.1",
     "chalk": "^5.3.0",
     "commitlint": "^19.5.0",
+    "cross-env": "^7.0.3",
+    "cypress": "^13.14.2",
     "eslint": "^9.10.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.30.0",
@@ -90,10 +108,12 @@
     "fetch-mock": "^11.1.3",
     "globals": "^15.9.0",
     "husky": "^9.1.6",
+    "jest": "^29.7.0",
     "lint-staged": "^15.2.10",
     "lodash": "^4.17.21",
     "markdownlint-cli": "^0.41.0",
     "mkdirp": "^3.0.1",
+    "mongoose-migrate": "^0.2.4",
     "nodemon": "^3.1.4",
     "postcss": "^8.4.47",
     "postcss-apply": "^0.12.0",
@@ -112,6 +132,7 @@
     "redux": "^5.0.1",
     "sass": "^1.78.0",
     "serve": "^14.2.3",
+    "sonarqube-scanner": "^4.2.2",
     "stylelint": "^16.9.0",
     "stylelint-config-recommended": "^14.0.1",
     "stylelint-config-standard": "^36.0.1",
@@ -145,20 +166,27 @@
     "match-sorter": "^6.3.4",
     "moment": "^2.30.1",
     "mongoose": "^8.6.2",
+    "newrelic": "^12.5.0",
     "prop-types": "^15.8.1",
     "radix": "^0.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-grid-layout": "^1.4.4",
     "react-helmet-async": "^2.0.5",
+    "react-hook-form": "^7.53.0",
     "react-i18next": "^15.0.2",
+    "react-intl": "^6.6.8",
     "react-lodash": "^0.1.2",
     "react-router-dom": "^6.26.2",
     "react-table": "^7.8.0",
+    "redux-saga": "^1.3.0",
     "sort-by": "^1.2.0",
     "styled-components": "^6.1.13",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
     "swr": "^2.2.5",
     "uuid": "^10.0.0",
+    "winston": "^3.14.2",
     "yup": "^1.4.0"
   }
 }
