@@ -1,0 +1,7 @@
+{
+  "entryPoints": ["./backend", "./frontend/src"],
+  "entryPointStrategy": "expand",
+  "out": "docs",
+  "tsconfig": "./typedoc.tsconfig.json",
+  "plugin": ["typedoc-plugin-markdown"],
+}

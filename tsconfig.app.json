@@ -22,6 +22,6 @@
       "noUnusedParameters": true,
       "noFallthroughCasesInSwitch": true
     },
-    "include": ["frontend/src"]
+    "include": ["frontend/src/**/*.{ts,tsx,js,jsx}", "backend/**/*.{ts,tsx,js,jsx}"]
   }
   
