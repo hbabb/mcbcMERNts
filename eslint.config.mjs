@@ -1,19 +1,37 @@
 // mcbcMERN/eslint.config.js
 
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import eslintPluginReact from 'eslint-plugin-react'
-import eslintPluginJsxA11y from 'eslint-plugin-jsx-a11y'
-import eslintPluginImport from 'eslint-plugin-import'
-import eslintPluginUnicorn from 'eslint-plugin-unicorn'
-import typescriptEslintParser from '@typescript-eslint/parser'
+import js from '@eslint/js';
+import globals from 'globals';
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
+import eslintPluginReact from 'eslint-plugin-react';
+import eslintPluginJsxA11y from 'eslint-plugin-jsx-a11y';
+import eslintPluginImport from 'eslint-plugin-import';
+import eslintPluginUnicorn from 'eslint-plugin-unicorn';
+import typescriptEslintParser from '@typescript-eslint/parser';
+import google from 'eslint-config-google';
+import { extend } from 'lodash';
 
 //** @type {import('eslint').FlatConfig[]} */
 
 export default [
   {
+    extends: [
+      'eslint:recommended',
+      'plugin:react/recommended',
+      'plugin:@typescript-eslint/recommended',
+      'plugin:jsx-a11y/recommended',
+      'plugin:import/errors',
+      'plugin:import/warnings',
+      'plugin:import/typescript',
+      'plugin:unicorn/recommended',
+      'plugin:react-hooks/recommended',
+      'plugin:react-refresh/recommended',
+      'plugin:js',
+      'plugin:jsdoc/recommended',
+      'plugin:prettier/recommended',
+      'google',
+    ],
     // Combine file patterns to cover both JavaScript and TypeScript files
     files: ['**/*.{ts,tsx,js,jsx}'],
     languageOptions: {
@@ -60,7 +78,7 @@ export default [
       'unicorn/filename-case': [
         'error',
         {
-          case: 'camelCase',
+          case: ['camelCase', 'pascalCase'],
         },
       ],
     },
