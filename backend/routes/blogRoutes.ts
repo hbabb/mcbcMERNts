@@ -15,7 +15,15 @@ router.put('/blog/:id', authenticate, blogController.updateBlogPost);
 router.delete('/blog/:id', authenticate, blogController.deleteBlogPost);
 
 router.post('/blog/:id/comment', authenticate, blogController.addComment);
-router.put('/blog/:id/comment/:commentId', authenticate, blogController.updateComment);
-router.delete('/blog/:id/comment/:commentId', authenticate, blogController.deleteComment);
+router.put(
+  '/blog/:id/comment/:commentId',
+  authenticate,
+  blogController.updateComment,
+);
+router.delete(
+  '/blog/:id/comment/:commentId',
+  authenticate,
+  blogController.deleteComment,
+);
 
 export default router;

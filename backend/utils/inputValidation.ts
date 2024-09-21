@@ -94,8 +94,8 @@ export const sanitizeInput = (input: string): string => {
       /**
        * The 'a' tag is allowed to have the 'href' attribute.
        */
-      'a': ['href']
-    }
+      a: ['href'],
+    },
   });
   console.log('Sanitized input:', sanitizedInput);
   return sanitizedInput;

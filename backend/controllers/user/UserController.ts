@@ -193,7 +193,10 @@ export const logoutUser = async (req: AuthenticatedRequest, res: Response) => {
  * the user document of the user that is currently authenticated
  * @param {Response} res - A response object to return the user document in
  */
-export const getUserProfile = async (req: AuthenticatedRequest, res: Response) => {
+export const getUserProfile = async (
+  req: AuthenticatedRequest,
+  res: Response,
+) => {
   // Log a message to the console indicating that we are getting the user profile
   console.log('Getting user profile');
 
@@ -231,7 +234,10 @@ export const getUserProfile = async (req: AuthenticatedRequest, res: Response) =
  * the user document of the user that is currently authenticated
  * @param {Response} res - A response object to return the user document in
  */
-export const updateUserProfile = async (req: AuthenticatedRequest, res: Response) => {
+export const updateUserProfile = async (
+  req: AuthenticatedRequest,
+  res: Response,
+) => {
   console.log('Updating user profile');
 
   // The request body is an object with the updates to the user document
@@ -250,7 +256,9 @@ export const updateUserProfile = async (req: AuthenticatedRequest, res: Response
   // The isValidOperation variable checks if all the updates in the request
   // body are valid. It uses the every() method to check if all the properties
   // in the updates object are in the allowedUpdates array.
-  const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
+  const isValidOperation = updates.every((update) =>
+    allowedUpdates.includes(update),
+  );
   console.log('IsValidOperation: ', isValidOperation);
 
   // If the updates are not valid, the function returns a 400 (Bad Request)
@@ -265,7 +273,7 @@ export const updateUserProfile = async (req: AuthenticatedRequest, res: Response
     // the updates in the request body. It iterates over the updates object and
     // sets the value of each property in the user document to the value in the
     // request body.
-    updates.forEach((update) => req.user[update] = req.body[update]);
+    updates.forEach((update) => (req.user[update] = req.body[update]));
     console.log('Updated user document: ', req.user);
 
     // The user document is saved to the database using the save() method.
@@ -331,7 +339,10 @@ export const getAllUsers = async (req: AuthenticatedRequest, res: Response) => {
  * @param {AuthenticatedRequest} req - Express request object with authenticated user information
  * @param {Response} res - Express response object
  */
-export const updateUserRole = async (req: AuthenticatedRequest, res: Response) => {
+export const updateUserRole = async (
+  req: AuthenticatedRequest,
+  res: Response,
+) => {
   console.log('Updating user role');
 
   // Check if the user is an admin

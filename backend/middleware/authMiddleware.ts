@@ -17,7 +17,11 @@ export interface AuthenticatedRequest extends Request {
  * @param res - The Express response object.
  * @param next - The next middleware function to call.
  */
-export const authenticate = async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
+export const authenticate = async (
+  req: AuthenticatedRequest,
+  res: Response,
+  next: NextFunction,
+) => {
   try {
     // Get the token from the Authorization header
     // The token is expected to be in the format "Bearer <token>".
@@ -43,7 +47,7 @@ export const authenticate = async (req: AuthenticatedRequest, res: Response, nex
     // containing the algorithm used to sign the token.
     // In this case, we use the HS256 algorithm.
     const decoded = jwt.verify(token, process.env.JWT_SECRET as string, {
-      algorithms: ['HS256']
+      algorithms: ['HS256'],
     });
 
     // Log the decoded token to the console for debugging purposes.
@@ -55,7 +59,10 @@ export const authenticate = async (req: AuthenticatedRequest, res: Response, nex
     // The query is an object with the _id property set to the _id property
     // of the decoded token, and the tokens.token property set to the token.
     // This query will find a user with the given _id and token.
-    const user = await User.findOne({ _id: decoded._id, 'tokens.token': token });
+    const user = await User.findOne({
+      _id: decoded._id,
+      'tokens.token': token,
+    });
 
     // Log the found user to the console for debugging purposes.
     console.log('Found user: ', user);

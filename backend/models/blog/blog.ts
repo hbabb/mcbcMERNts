@@ -18,21 +18,24 @@ export interface IBlog extends Document {
   // Add other fields as necessary
 }
 
-const CommentSchema = new Schema({
-  commenter: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-    required: true
+const CommentSchema = new Schema(
+  {
+    commenter: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+    },
+    comment: {
+      type: String,
+      required: true,
+    },
+    editedByAdmin: {
+      type: Boolean,
+      default: false,
+    },
   },
-  comment: {
-    type: String,
-    required: true
-  },
-  editedByAdmin: {
-    type: Boolean,
-    default: false
-  }
-}, { timestamps: true });
+  { timestamps: true },
+);
 
 // Define schema for image and video data
 const mediaSchema = new mongoose.Schema(

@@ -33,7 +33,10 @@ export const getAllBlogPosts = async (req: Request, res: Response) => {
     // Query the database and get the blog posts
     // Use the skip and limit methods to implement pagination
     // Sort the blog posts by createdAt in descending order (newest first)
-    const blogPosts = await Blog.find().skip(skip).limit(limit).sort({ createdAt: -1 });
+    const blogPosts = await Blog.find()
+      .skip(skip)
+      .limit(limit)
+      .sort({ createdAt: -1 });
 
     // Get the total number of blog posts
     const total = await Blog.countDocuments();
@@ -47,7 +50,7 @@ export const getAllBlogPosts = async (req: Request, res: Response) => {
       blogPosts,
       currentPage: page,
       totalPages: Math.ceil(total / limit),
-      totalPosts: total
+      totalPosts: total,
     });
   } catch (error) {
     console.error('Error getting blog posts: ', error.message);
@@ -167,7 +170,10 @@ export const getBlogBySlug = async (req: Request, res: Response) => {
  * authenticated user information
  * @param {Response} res - Express response object
  */
-export const createBlogPost = async (req: AuthenticatedRequest, res: Response) => {
+export const createBlogPost = async (
+  req: AuthenticatedRequest,
+  res: Response,
+) => {
   try {
     // Check if the request is authenticated and if the user has the "editor" role
     // If the user is not authenticated or does not have the "editor" role, return a 403 (Forbidden) response
@@ -199,7 +205,7 @@ export const createBlogPost = async (req: AuthenticatedRequest, res: Response) =
       summary: req.body.summary,
       content: req.body.content,
       author: req.user.id,
-      tags: req.body.tags
+      tags: req.body.tags,
     });
 
     console.log('Creating blog post: ', blog);
@@ -248,7 +254,10 @@ export const createBlogPost = async (req: AuthenticatedRequest, res: Response) =
  * authenticated user information
  * @param {Response} res - Express response object
  */
-export const updateBlogPost = async (req: AuthenticatedRequest, res: Response) => {
+export const updateBlogPost = async (
+  req: AuthenticatedRequest,
+  res: Response,
+) => {
   try {
     console.log(`Updating blog post with ID: ${req.params.id}`);
     // Check if the user is authenticated and has the "editor" role
@@ -276,7 +285,9 @@ export const updateBlogPost = async (req: AuthenticatedRequest, res: Response) =
 
     // Update the blog post with the given ID with the given blog post object
     console.log('Updating blog post with: ', req.body);
-    const updatedBlog = await Blog.findByIdAndUpdate(id, req.body, { new: true });
+    const updatedBlog = await Blog.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
     if (!updatedBlog) {
       console.log('Blog not found');
       // Return a 404 (Not Found) response with an error message
@@ -305,7 +316,10 @@ export const updateBlogPost = async (req: AuthenticatedRequest, res: Response) =
 // message.
 // If the blog post is deleted successfully, it returns a 200 (OK) response with a
 // success message.
-export const deleteBlogPost = async (req: AuthenticatedRequest, res: Response) => {
+export const deleteBlogPost = async (
+  req: AuthenticatedRequest,
+  res: Response,
+) => {
   // This function is only accessible to authenticated users with the "editor"
   // role. If the user is not authenticated or does not have the "editor" role,
   // it returns a 403 (Forbidden) response with an error message.
@@ -416,7 +430,7 @@ export const addComment = async (req: AuthenticatedRequest, res: Response) => {
       // The commenter is the authenticated user's ID
       commenter: req.user.id,
       // The comment is the sanitized comment
-      comment: sanitizeInput(comment)
+      comment: sanitizeInput(comment),
     });
 
     // Save the blog post
@@ -444,15 +458,23 @@ export const addComment = async (req: AuthenticatedRequest, res: Response) => {
  * @param {AuthenticatedRequest} req - Express request object with authenticated user information
  * @param {Response} res - Express response object
  */
-export const updateComment = async (req: AuthenticatedRequest, res: Response) => {
+export const updateComment = async (
+  req: AuthenticatedRequest,
+  res: Response,
+) => {
   try {
     const { blogId, commentId } = req.params;
     const { comment } = req.body;
 
-    console.log(`Updating comment with ID: ${commentId} in blog post with ID: ${blogId}`);
+    console.log(
+      `Updating comment with ID: ${commentId} in blog post with ID: ${blogId}`,
+    );
 
     // Check if the blog ID and comment ID are valid
-    if (!mongoose.Types.ObjectId.isValid(blogId) || !mongoose.Types.ObjectId.isValid(commentId)) {
+    if (
+      !mongoose.Types.ObjectId.isValid(blogId) ||
+      !mongoose.Types.ObjectId.isValid(commentId)
+    ) {
       console.log('Invalid blog ID or comment ID');
       return res.status(400).json({ message: 'Invalid blog ID or comment ID' });
     }
@@ -474,7 +496,9 @@ export const updateComment = async (req: AuthenticatedRequest, res: Response) =>
     console.log('Blog found: ', blog);
 
     // Fetch the comment with the given ID
-    const commentToUpdate = blog.comments.find(comment => comment._id.toString() === commentId);
+    const commentToUpdate = blog.comments.find(
+      (comment) => comment._id.toString() === commentId,
+    );
     if (!commentToUpdate) {
       console.log('Comment not found');
       return res.status(404).json({ message: 'Comment not found' });
@@ -485,15 +509,26 @@ export const updateComment = async (req: AuthenticatedRequest, res: Response) =>
 
     // Check if the user has permission to update the comment
     // The user must be the original commenter or have the "admin" role
-    if (commentToUpdate.commenter.toString() !== req.user.id && req.user.role !== 'admin') {
+    if (
+      commentToUpdate.commenter.toString() !== req.user.id &&
+      req.user.role !== 'admin'
+    ) {
       console.log('User does not have permission to update comment');
-      return res.status(403).json({ message: 'You can only edit your own comments or you must be an admin' });
+      return res
+        .status(403)
+        .json({
+          message:
+            'You can only edit your own comments or you must be an admin',
+        });
     }
 
     // Update the comment
     commentToUpdate.comment = sanitizeInput(comment);
     // If the user is an admin and not the original commenter, set the editedByAdmin flag to true
-    if (req.user.role === 'admin' && req.user.id !== commentToUpdate.commenter.toString()) {
+    if (
+      req.user.role === 'admin' &&
+      req.user.id !== commentToUpdate.commenter.toString()
+    ) {
       commentToUpdate.editedByAdmin = true;
     }
     // Save the updated blog post
@@ -502,7 +537,12 @@ export const updateComment = async (req: AuthenticatedRequest, res: Response) =>
     // Log the updated comment to the console
     console.log('Comment updated successfully: ', commentToUpdate);
     // Return a 200 (OK) response with the updated comment
-    res.status(200).json({ message: 'Comment updated successfully', comment: commentToUpdate });
+    res
+      .status(200)
+      .json({
+        message: 'Comment updated successfully',
+        comment: commentToUpdate,
+      });
   } catch (error) {
     console.error('Error updating comment: ', error.message);
     // Return a 500 (Internal Server Error) response with an error message
@@ -542,7 +582,10 @@ export const updateComment = async (req: AuthenticatedRequest, res: Response) =>
  * authenticated user information
  * @param {Response} res - Express response object
  */
-export const deleteComment = async (req: AuthenticatedRequest, res: Response) => {
+export const deleteComment = async (
+  req: AuthenticatedRequest,
+  res: Response,
+) => {
   try {
     const blogId = req.params.blogId;
     const commentId = req.params.commentId;
@@ -550,7 +593,10 @@ export const deleteComment = async (req: AuthenticatedRequest, res: Response) =>
     console.log('Deleting comment with ID: ', commentId);
 
     // Check if the blog ID and comment ID are valid
-    if (!mongoose.Types.ObjectId.isValid(blogId) || !mongoose.Types.ObjectId.isValid(commentId)) {
+    if (
+      !mongoose.Types.ObjectId.isValid(blogId) ||
+      !mongoose.Types.ObjectId.isValid(commentId)
+    ) {
       console.log('Invalid blog ID or comment ID');
       return res.status(400).json({ message: 'Invalid blog ID or comment ID' });
     }
@@ -563,7 +609,9 @@ export const deleteComment = async (req: AuthenticatedRequest, res: Response) =>
     }
 
     // Fetch the comment with the given ID
-    const comment = blog.comments.find(comment => comment._id.toString() === commentId);
+    const comment = blog.comments.find(
+      (comment) => comment._id.toString() === commentId,
+    );
     if (!comment) {
       console.log('Comment not found');
       return res.status(404).json({ message: 'Comment not found' });
@@ -571,13 +619,23 @@ export const deleteComment = async (req: AuthenticatedRequest, res: Response) =>
 
     // Check if the user has permission to delete the comment
     // The user must be the original commenter or an admin
-    if (comment.commenter.toString() !== req.user.id && req.user.role !== 'admin') {
+    if (
+      comment.commenter.toString() !== req.user.id &&
+      req.user.role !== 'admin'
+    ) {
       console.log('User does not have permission to delete comment');
-      return res.status(403).json({ message: 'You can only delete your own comments or you must be an admin' });
+      return res
+        .status(403)
+        .json({
+          message:
+            'You can only delete your own comments or you must be an admin',
+        });
     }
 
     // Find the index of the comment to delete
-    const index = blog.comments.findIndex(comment => comment._id.toString() === commentId);
+    const index = blog.comments.findIndex(
+      (comment) => comment._id.toString() === commentId,
+    );
     console.log('Index of comment to delete: ', index);
 
     // Remove the comment from the blog post using splice

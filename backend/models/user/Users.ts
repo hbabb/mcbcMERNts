@@ -12,55 +12,60 @@ export interface IUser extends Document {
   comparePassword(password: string): Promise<boolean>;
 }
 
-const userSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    required: true,
-    unique: true,
-    trim: true
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-    trim: true,
-    lowercase: true
-  },
-  password: {
-    type: String,
-    required: true,
-    minlength: 7
-  },
-  role: {
-    type: String,
-    enum: ['admin', 'editor', 'user'],
-    default: 'user'
-  },
-  tokens: [{
-    token: {
+const userSchema = new mongoose.Schema(
+  {
+    username: {
       type: String,
-      required: true
-    }
-  }]
-}, {
-  timestamps: true
-});
+      required: true,
+      unique: true,
+      trim: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
+      lowercase: true,
+    },
+    password: {
+      type: String,
+      required: true,
+      minlength: 7,
+    },
+    role: {
+      type: String,
+      enum: ['admin', 'editor', 'user'],
+      default: 'user',
+    },
+    tokens: [
+      {
+        token: {
+          type: String,
+          required: true,
+        },
+      },
+    ],
+  },
+  {
+    timestamps: true,
+  },
+);
 
-  /**
-   * Generates a new JSON Web Token for the user.
-   * The token is stored in the user's document in the database.
-   * The token is signed with the JWT_SECRET environment variable.
-   * The token is returned as a Promise.
-   *
-   * The logic for generating the token is as follows:
-   * 1. The user's _id property is converted to a string using the toString() method.
-   * 2. The string is used as the payload for the token.
-   * 3. The payload is signed with the JWT_SECRET environment variable using the jwt.sign() method.
-   * 4. The signed token is added to the user's tokens array in their document.
-   * 5. The user's document is saved to the database using the save() method.
-   * 6. The generated token is returned as a Promise.
-   */
-userSchema.methods.generateAuthToken = async function() {
+/**
+ * Generates a new JSON Web Token for the user.
+ * The token is stored in the user's document in the database.
+ * The token is signed with the JWT_SECRET environment variable.
+ * The token is returned as a Promise.
+ *
+ * The logic for generating the token is as follows:
+ * 1. The user's _id property is converted to a string using the toString() method.
+ * 2. The string is used as the payload for the token.
+ * 3. The payload is signed with the JWT_SECRET environment variable using the jwt.sign() method.
+ * 4. The signed token is added to the user's tokens array in their document.
+ * 5. The user's document is saved to the database using the save() method.
+ * 6. The generated token is returned as a Promise.
+ */
+userSchema.methods.generateAuthToken = async function () {
   // Get the user document that this method is being called on
   const user = this;
   console.log('Generating new token for user: ', user);
@@ -103,7 +108,7 @@ userSchema.methods.generateAuthToken = async function() {
  * 4. The result of the comparison is logged to the console for debugging purposes.
  * 5. The result of the comparison is returned as a Promise.
  */
-userSchema.methods.comparePassword = async function(password: string) {
+userSchema.methods.comparePassword = async function (password: string) {
   console.log('Comparing given password: ', password);
   console.log('With password in database: ', this.password);
   const result = await bcrypt.compare(password, this.password);
@@ -111,7 +116,7 @@ userSchema.methods.comparePassword = async function(password: string) {
   return result;
 };
 
-userSchema.pre('save', async function(next) {
+userSchema.pre('save', async function (next) {
   const user = this;
   if (user.isModified('password')) {
     user.password = await bcrypt.hash(user.password, 8);
