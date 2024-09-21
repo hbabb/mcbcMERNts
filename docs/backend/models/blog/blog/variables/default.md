@@ -7,13 +7,11 @@
 
 # Variable: default
 
-> **default**: `Model`\<`object` & `object`, `object`, `object`, `object`,
-> `Document`\<`unknown`, `object`, `object` & `object`\> & `object` & `object` &
-> `object`, `Schema`\<`any`, `Model`\<`any`, `any`, `any`, `any`, `any`,
-> `any`\>, `object`, `object`, `object`, `object`, `object`, `object` &
-> `object`, `Document`\<`unknown`, `object`, `FlatRecord`\<`object` &
-> `object`\>\> & `FlatRecord`\<`object` & `object`\> & `object`\>\>
+> `const` **default**: `Model`\<[`IBlog`](../interfaces/IBlog.md), `object`,
+> `object`, `object`, `Document`\<`unknown`, `object`,
+> [`IBlog`](../interfaces/IBlog.md)\> & [`IBlog`](../interfaces/IBlog.md) &
+> `Required`\<`object`\>, `any`\>
 
 ## Defined in
 
-[backend/models/blog/blog.ts:116](https://github.com/Data-Point-Solutions/mcbcMERNts/blob/e780d98cfaad9d8ffef43e14c4890a3da759d36d/backend/models/blog/blog.ts#L116)
+[backend/models/blog/blog.ts:121](https://github.com/Data-Point-Solutions/mcbcMERNts/blob/c075a2f91fc90c2c88df62270de0475f3bdb96de/backend/models/blog/blog.ts#L121)

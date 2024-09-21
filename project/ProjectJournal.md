@@ -47,3 +47,14 @@ refactoring my documentation from the typedoc format.
 - Build the frontend with React
 
 ## Entry Date: September 21, 2024
+
+I added the blog controller and updated the blog model. I also added the blog
+route. I worked on the user system, adding the users model, controller, and
+route. I ran the TypeDoc to create rough documentation for these precesses.
+
+- Add Contact setup for the backend
+- Add event and event registration for the backend
+- Add messages to the backend code. This will not require interaction from the
+  frontend other than pushing the message to the database.
+
+## Entry Date: September 22, 2024

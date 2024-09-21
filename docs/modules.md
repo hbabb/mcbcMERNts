@@ -8,6 +8,8 @@
 
 - [backend](backend/README.md)
 - [backend/controllers/blog/blogController](backend/controllers/blog/blogController/README.md)
+- [backend/controllers/user/UserController](backend/controllers/user/UserController/README.md)
+- [backend/middleware/authMiddleware](backend/middleware/authMiddleware/README.md)
 - [backend/models/blog/blog](backend/models/blog/blog/README.md)
 - [backend/models/contact/ContactForm](backend/models/contact/ContactForm/README.md)
 - [backend/models/events/Event](backend/models/events/Event/README.md)
@@ -24,6 +26,7 @@
 - [backend/routes/prayerListRoutes](backend/routes/prayerListRoutes/README.md)
 - [backend/routes/prayerRequestRoutes](backend/routes/prayerRequestRoutes/README.md)
 - [backend/routes/userRoutes](backend/routes/userRoutes/README.md)
+- [backend/utils/inputValidation](backend/utils/inputValidation/README.md)
 - [frontend/src/app/main](frontend/src/app/main/README.md)
 - [frontend/src/components/footer/footer](frontend/src/components/footer/footer/README.md)
 - [frontend/src/components/footer/footer.test](frontend/src/components/footer/footer.test/README.md)

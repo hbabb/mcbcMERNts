@@ -27,4 +27,4 @@
 
 ## Defined in
 
-[frontend/src/routes/router.tsx:21](https://github.com/Data-Point-Solutions/mcbcMERNts/blob/e780d98cfaad9d8ffef43e14c4890a3da759d36d/frontend/src/routes/router.tsx#L21)
+[frontend/src/routes/router.tsx:21](https://github.com/Data-Point-Solutions/mcbcMERNts/blob/c075a2f91fc90c2c88df62270de0475f3bdb96de/frontend/src/routes/router.tsx#L21)

@@ -9,21 +9,18 @@
 
 > **getAllBlogPosts**(`req`, `res`): `Promise`\<`void`\>
 
-Controller function to get all blog posts from the database This function is
-called when the client (i.e. the frontend) makes a GET request to the /blog
-route The function uses the Blog model to query the MongoDB database and
-retrieve all blog posts It then sends the retrieved blog posts back to the
-client in the response
+Get all blog posts (with pagination)
 
 ## Parameters
 
-• **req**: `any`
+• **req**: `Request`\<`ParamsDictionary`, `any`, `any`, `ParsedQs`,
+`Record`\<`string`, `any`\>\>
 
-The request object
+Express request object
 
-• **res**: `any`
+• **res**: `Response`\<`any`, `Record`\<`string`, `any`\>\>
 
-The response object
+Express response object
 
 ## Returns
 
@@ -31,4 +28,4 @@ The response object
 
 ## Defined in
 
-backend/controllers/blog/blogController.ts:15
+[backend/controllers/blog/blogController.ts:14](https://github.com/Data-Point-Solutions/mcbcMERNts/blob/c075a2f91fc90c2c88df62270de0475f3bdb96de/backend/controllers/blog/blogController.ts#L14)

@@ -27,4 +27,4 @@
 
 ## Defined in
 
-[frontend/src/components/footer/footer.tsx:9](https://github.com/Data-Point-Solutions/mcbcMERNts/blob/e780d98cfaad9d8ffef43e14c4890a3da759d36d/frontend/src/components/footer/footer.tsx#L9)
+[frontend/src/components/footer/footer.tsx:9](https://github.com/Data-Point-Solutions/mcbcMERNts/blob/c075a2f91fc90c2c88df62270de0475f3bdb96de/frontend/src/components/footer/footer.tsx#L9)

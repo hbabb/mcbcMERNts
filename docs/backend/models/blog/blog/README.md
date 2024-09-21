@@ -8,6 +8,11 @@
 
 ## Index
 
+### Interfaces
+
+- [IBlog](interfaces/IBlog.md)
+- [IComment](interfaces/IComment.md)
+
 ### Variables
 
 - [default](variables/default.md)

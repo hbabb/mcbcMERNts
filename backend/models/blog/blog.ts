@@ -1,33 +1,38 @@
 // mcbcMERNts/backend/models/blog/Blog.ts
 
-import mongoose from 'mongoose';
+import mongoose, { Document, Schema } from 'mongoose';
 import { v4 as uuidv4 } from 'uuid';
 
-// Define schema for comment data
-const commentSchema = new mongoose.Schema(
-  {
-    commenter: {
-      type: String,
-      required: true,
-      trim: true,
-      minlength: 3,
-    },
-    comment: {
-      type: String,
-      required: true,
-      trim: true,
-      minlength: 3,
-    },
-    date: {
-      type: Date,
-      default: Date.now,
-    },
+export interface IComment {
+  _id: mongoose.Types.ObjectId;
+  commenter: mongoose.Types.ObjectId;
+  comment: string;
+  editedByAdmin?: boolean;
+}
+
+export interface IBlog extends Document {
+  title: string;
+  content: string;
+  author: mongoose.Types.ObjectId;
+  comments: IComment[];
+  // Add other fields as necessary
+}
+
+const CommentSchema = new Schema({
+  commenter: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
   },
-  {
-    timestamps: true,
-    _id: false,
+  comment: {
+    type: String,
+    required: true
   },
-);
+  editedByAdmin: {
+    type: Boolean,
+    default: false
+  }
+}, { timestamps: true });
 
 // Define schema for image and video data
 const mediaSchema = new mongoose.Schema(
@@ -58,7 +63,7 @@ const mediaSchema = new mongoose.Schema(
 );
 
 // Define schema for blog data
-const blogSchema = new mongoose.Schema(
+const BlogSchema = new mongoose.Schema(
   {
     blogId: {
       type: String,
@@ -104,7 +109,7 @@ const blogSchema = new mongoose.Schema(
       type: [String],
       default: [],
     },
-    comments: [commentSchema],
+    comments: [CommentSchema],
     images: [mediaSchema],
     videos: [mediaSchema],
   },
@@ -113,4 +118,6 @@ const blogSchema = new mongoose.Schema(
   },
 );
 
-export default mongoose.model('Blog', blogSchema);
+const Blog = mongoose.model<IBlog>('Blog', BlogSchema);
+
+export default Blog;
