@@ -2,6 +2,7 @@
 
 ## Description
 
+
 This project is a MERN (MongoDB, Express, React, Node.js) stack website for
 Motlow Creek Baptist Church. It is built using TypeScript and includes features
 such as blogs, events, contact forms, registration forms, prayer request forms,
@@ -10,7 +11,7 @@ from the pastor and prayer director.
 
 ## Table of Contents
 
-- [Motlow Creek Baptist Church Website](docs/README-Project.md#motlow-creek-baptist-church-website)
+  - [Motlow Creek Baptist Church Website](docs/README-Project.md#motlow-creek-baptist-church-website)
   - [Description](docs/README-Project.md#description)
   - [Table of Contents](docs/README-Project.md#table-of-contents)
   - [Installation](docs/README-Project.md#installation)
@@ -20,6 +21,18 @@ from the pastor and prayer director.
   - [Technologies Used](docs/README-Project.md#technologies-used)
   - [Contributing](docs/README-Project.md#contributing)
   - [License](docs/README-Project.md#license)
+
+This project is a MERN (MongoDB, Express, React, Node.js) stack website for Motlow Creek Baptist Church. It is built using TypeScript and includes features such as blogs, events, contact forms, registration forms, prayer request forms, and prayer list forms. The site also automatically pulls the latest messages from the pastor and prayer director.
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [Technologies Used](#technologies-used)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Installation
 
@@ -48,8 +61,10 @@ from the pastor and prayer director.
 
 ## Usage
 
+
 [Add instructions on how to use the website, including any login information for
 admin access]
+[Add instructions on how to use the website, including any login information for admin access]
 
 ## Features
 
