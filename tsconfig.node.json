@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+      "types": ["vite/client", "vitest/globals", "node"],
       "target": "ES2022",
       "lib": ["ES2023"],
       "module": "ESNext",
@@ -19,6 +20,6 @@
       "noUnusedParameters": true,
       "noFallthroughCasesInSwitch": true
     },
-    "include": ["vite.config.ts"]
+    "include": ["vite.config.ts", "frontend/src/**/*.{ts,tsx,js,jsx}", "backend/**/*.{ts,tsx,js,jsx}"]
   }
   
