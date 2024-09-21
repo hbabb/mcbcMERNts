@@ -514,12 +514,9 @@ export const updateComment = async (
       req.user.role !== 'admin'
     ) {
       console.log('User does not have permission to update comment');
-      return res
-        .status(403)
-        .json({
-          message:
-            'You can only edit your own comments or you must be an admin',
-        });
+      return res.status(403).json({
+        message: 'You can only edit your own comments or you must be an admin',
+      });
     }
 
     // Update the comment
@@ -537,12 +534,10 @@ export const updateComment = async (
     // Log the updated comment to the console
     console.log('Comment updated successfully: ', commentToUpdate);
     // Return a 200 (OK) response with the updated comment
-    res
-      .status(200)
-      .json({
-        message: 'Comment updated successfully',
-        comment: commentToUpdate,
-      });
+    res.status(200).json({
+      message: 'Comment updated successfully',
+      comment: commentToUpdate,
+    });
   } catch (error) {
     console.error('Error updating comment: ', error.message);
     // Return a 500 (Internal Server Error) response with an error message
@@ -624,12 +619,10 @@ export const deleteComment = async (
       req.user.role !== 'admin'
     ) {
       console.log('User does not have permission to delete comment');
-      return res
-        .status(403)
-        .json({
-          message:
-            'You can only delete your own comments or you must be an admin',
-        });
+      return res.status(403).json({
+        message:
+          'You can only delete your own comments or you must be an admin',
+      });
     }
 
     // Find the index of the comment to delete
