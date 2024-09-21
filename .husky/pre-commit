@@ -1,1 +1,2 @@
-npm test
+yarn fix:markdown
+yarn prettier:fix

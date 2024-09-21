@@ -2,21 +2,21 @@
 /** @type {import('vite').UserConfig} */
 import path from 'node:path';
 
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
-import svgr from '@svgr/rollup'
-import autoprefixer from 'autoprefixer'
-import EnvironmentPlugin from 'vite-plugin-environment'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react-swc';
+import svgr from '@svgr/rollup';
+import autoprefixer from 'autoprefixer';
+import EnvironmentPlugin from 'vite-plugin-environment';
 
-const __dirname = path.dirname(new URL(import.meta.url).pathname)
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), svgr({ exportType: 'default' }), EnvironmentPlugin('all'),],
+  plugins: [react(), svgr({ exportType: 'default' }), EnvironmentPlugin('all')],
   root: 'frontend',
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'frontend')
+      '@': path.resolve(__dirname, 'frontend'),
     },
   },
   css: {
@@ -40,4 +40,4 @@ export default defineConfig({
       usePolling: true,
     },
   },
-})
+});

@@ -36,8 +36,7 @@
     "preview": "vite preview",
     "start:frontend": "serve -s dist",
     "clean": "rm -rf dist",
-    "analyze": "vite build --mode analyze",
-    "prepare": "husky"
+    "analyze": "vite build --mode analyze"
   },
   "husky": {
     "hooks": {

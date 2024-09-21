@@ -36,13 +36,25 @@ const Navbar: React.FC = () => {
               <MenuItem as={RouterLink} to="/about" className="navbar-link">
                 About Us
               </MenuItem>
-              <MenuItem as={RouterLink} to="/about/missions" className="navbar-link">
+              <MenuItem
+                as={RouterLink}
+                to="/about/missions"
+                className="navbar-link"
+              >
                 Missions
               </MenuItem>
-              <MenuItem as={RouterLink} to="/about/school" className="navbar-link">
+              <MenuItem
+                as={RouterLink}
+                to="/about/school"
+                className="navbar-link"
+              >
                 School
               </MenuItem>
-              <MenuItem as={RouterLink} to="/about/staff" className="navbar-link">
+              <MenuItem
+                as={RouterLink}
+                to="/about/staff"
+                className="navbar-link"
+              >
                 Staff
               </MenuItem>
             </MenuList>
@@ -70,7 +82,7 @@ const Navbar: React.FC = () => {
           aria-label="Open Menu"
           className="hamburger-menu"
           onClick={isOpen ? onClose : onOpen}
-          style={{ display: 'none'}}
+          style={{ display: 'none' }}
         />
       </Flex>
 
@@ -89,13 +101,25 @@ const Navbar: React.FC = () => {
                 <MenuItem as={RouterLink} to="/about" className="navbar-link">
                   About Us
                 </MenuItem>
-                <MenuItem as={RouterLink} to="/about/missions" className="navbar-link">
+                <MenuItem
+                  as={RouterLink}
+                  to="/about/missions"
+                  className="navbar-link"
+                >
                   Missions
                 </MenuItem>
-                <MenuItem as={RouterLink} to="/about/school" className="navbar-link">
+                <MenuItem
+                  as={RouterLink}
+                  to="/about/school"
+                  className="navbar-link"
+                >
                   School
                 </MenuItem>
-                <MenuItem as={RouterLink} to="/about/staff" className="navbar-link">
+                <MenuItem
+                  as={RouterLink}
+                  to="/about/staff"
+                  className="navbar-link"
+                >
                   Staff
                 </MenuItem>
               </MenuList>
