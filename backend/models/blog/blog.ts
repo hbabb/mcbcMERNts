@@ -121,6 +121,5 @@ const BlogSchema = new mongoose.Schema(
   },
 );
 
-const Blog = mongoose.model<IBlog>('Blog', BlogSchema);
+export const Blog = mongoose.model<IBlog>('Blog', BlogSchema);
 
-export default Blog;

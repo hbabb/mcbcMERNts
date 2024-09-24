@@ -1,7 +1,7 @@
 // mcbcMERNts/backend/controllers/blog/blogController.ts
 
 import mongoose from 'mongoose';
-import Blog from '../../models/blog/blog';
+import { Blog } from '../../models/blog/blog';
 import { Request, Response } from 'express';
 import { validateBlogInput, sanitizeInput } from '../../utils/inputValidation';
 import { AuthenticatedRequest } from '../../middleware/authMiddleware';
